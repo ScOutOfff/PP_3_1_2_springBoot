@@ -21,33 +21,26 @@ public class UserDaoImp implements UserDao {
     @Override
     @SuppressWarnings("unchecked")
     public List<User> getUserList() {
-        System.err.println("\ngetUserList is now work!\n");
         return entityManager.createQuery("FROM User", User.class).getResultList();
     }
     @Override
     public void add(User user) {
-        System.out.println("adding a User is now work!");
         entityManager.persist(user);
     }
 
     @Override
     public User getUserById(int id) {
-        System.out.println("getUserById is now work!");
         return entityManager.find(User.class, id);
     }
 
     @Override
     public void editUser(int id, User user) {
-        System.out.println("editUser is now work!");
         entityManager.merge(user);
     }
 
 
     @Override
     public void delete(int id) {
-        System.out.println("delete Method is now work!");
         entityManager.remove(getUserById(id));
     }
-
-
 }
